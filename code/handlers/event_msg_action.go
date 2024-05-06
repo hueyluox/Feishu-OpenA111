@@ -78,7 +78,9 @@ func (*MessageAction) Execute(a *ActionInfo) bool {
 			completions.Content)
 		return false
 	}
-	err = replyMsg(*a.ctx, completions.Content, a.info.msgId)
+	//err = replyMsg(*a.ctx, completions.Content, a.info.msgId)
+	err = sendMsg(*a.ctx, completions.Content, a.info.chatId)
+
 	if err != nil {
 		replyMsg(*a.ctx, fmt.Sprintf(
 			"🤖️：消息机器人摆烂了，请稍后再试～\n错误信息: %v", err), a.info.msgId)
